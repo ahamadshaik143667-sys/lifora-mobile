@@ -38,6 +38,9 @@ const reactAny = React as unknown as { __CLASSNAME_SHIM__?: boolean } & typeof R
 if (!reactAny.__CLASSNAME_SHIM__) {
 	const originalCreateElement = React.createElement;
 	reactAny.__CLASSNAME_SHIM__ = true;
+	// Assigning a patched createElement may not match React types exactly; cast to any to avoid TS errors
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
 	React.createElement = function createElementWithClassNamePatch(
 		type: any,
 		props: any,

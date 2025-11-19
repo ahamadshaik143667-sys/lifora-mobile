@@ -36,6 +36,7 @@ export const initSentry = () => {
     sessionTrackingIntervalMillis: 30000,
     attachStacktrace: true,
     beforeSend(event) {
+      beforeSend(event: any) {
       // Filter out sensitive data
       if (event.request) {
         delete event.request.cookies;
