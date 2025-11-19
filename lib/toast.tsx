@@ -35,13 +35,14 @@ export const Toast = (): React.ReactElement | null => {
     };
   }, []);
 
-  useEffect(() => {
+  useEffect((): void | (() => void) => {
     if (state.visible) {
       const timer = setTimeout(() => {
         setState(prev => ({ ...prev, visible: false }));
       }, 3000);
       return () => clearTimeout(timer);
     }
+    return;
   }, [state.visible]);
 
   const translateY = useAnimatedStyle(() => ({
