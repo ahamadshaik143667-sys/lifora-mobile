@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, TextInput, RefreshControl, TouchableOpacity } from 'react-native';
-import { useRouter } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
-import { useTheme } from '@/styles/theme';
-import { Header } from '@/components/Header';
+import { RefreshControl, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+// router not used here
 import { CourseCard } from '@/components/CourseCard';
+import { Header } from '@/components/Header';
 import { Loader } from '@/components/Loader';
 import { useCourseStore } from '@/store/courseStore';
+import { useTheme } from '@/styles/theme';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function CoursesScreen() {
-  const router = useRouter();
   const { colors } = useTheme();
   const { courses, isLoading, fetchCourses } = useCourseStore();
   const [searchQuery, setSearchQuery] = useState('');

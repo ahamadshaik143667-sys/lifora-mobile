@@ -19,7 +19,8 @@ export default async function handler(req: Request): Promise<Response> {
   }
 
   try {
-    const rawBody = await req.text();
+    // Read raw body if signature validation is implemented
+    await req.text();
     const signature = req.headers.get('stripe-signature');
 
     if (!signature) {

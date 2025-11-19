@@ -1,8 +1,7 @@
-import React, { useState, useRef } from 'react';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { Video, ResizeMode, AVPlaybackStatus } from 'expo-av';
 import { Ionicons } from '@expo/vector-icons';
-import { useTheme } from '@/styles/theme';
+import { AVPlaybackStatus, ResizeMode, Video } from 'expo-av';
+import React, { useRef, useState } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 interface VideoPlayerProps {
@@ -16,7 +15,6 @@ export const VideoPlayer = ({ uri, onComplete }: VideoPlayerProps) => {
   const [showControls, setShowControls] = useState(true);
   const [duration, setDuration] = useState(0);
   const [position, setPosition] = useState(0);
-  const { colors } = useTheme();
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
@@ -64,10 +62,10 @@ export const VideoPlayer = ({ uri, onComplete }: VideoPlayerProps) => {
   };
 
   return (
-    <TouchableOpacity 
+    <TouchableOpacity
       activeOpacity={1}
       onPress={handleTap}
-      className="relative w-full" 
+      className="relative w-full"
       style={{ backgroundColor: '#000' }}
     >
       <Video
@@ -85,15 +83,8 @@ export const VideoPlayer = ({ uri, onComplete }: VideoPlayerProps) => {
         style={[styles.controls, controlsOpacity]}
         className="absolute inset-0 items-center justify-center"
       >
-        <TouchableOpacity
-          onPress={togglePlayPause}
-          className="bg-black/50 rounded-full p-4"
-        >
-          <Ionicons
-            name={isPlaying ? 'pause' : 'play'}
-            size={32}
-            color="#ffffff"
-          />
+        <TouchableOpacity onPress={togglePlayPause} className="bg-black/50 rounded-full p-4">
+          <Ionicons name={isPlaying ? 'pause' : 'play'} size={32} color="#ffffff" />
         </TouchableOpacity>
       </Animated.View>
 

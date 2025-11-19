@@ -1,11 +1,9 @@
-import React from 'react';
-import { View, Text, ScrollView, TouchableOpacity, TextInput } from 'react-native';
-import { useRouter } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
-import { useTheme } from '@/styles/theme';
 import { Header } from '@/components/Header';
 import { useAuthStore } from '@/store/authStore';
-import { useState } from 'react';
+import { useTheme } from '@/styles/theme';
+import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import { ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function SettingsScreen() {
   const router = useRouter();
@@ -22,26 +20,20 @@ export default function SettingsScreen() {
   return (
     <View className="flex-1" style={{ backgroundColor: colors.background }}>
       <Header title="Settings" showBack />
-      
+
       <ScrollView className="flex-1">
         <View className="px-4 py-6">
-          <View 
+          <View
             className="rounded-xl mb-4 overflow-hidden"
             style={{ backgroundColor: colors.card }}
           >
             <View className="px-4 py-4 border-b" style={{ borderBottomColor: colors.border }}>
-              <Text 
-                className="text-base font-semibold mb-4"
-                style={{ color: colors.foreground }}
-              >
+              <Text className="text-base font-semibold mb-4" style={{ color: colors.foreground }}>
                 Profile Information
               </Text>
-              
+
               <View className="mb-4">
-                <Text 
-                  className="text-sm mb-2"
-                  style={{ color: colors.mutedForeground }}
-                >
+                <Text className="text-sm mb-2" style={{ color: colors.mutedForeground }}>
                   Full Name
                 </Text>
                 <TextInput
@@ -58,10 +50,7 @@ export default function SettingsScreen() {
               </View>
 
               <View className="mb-4">
-                <Text 
-                  className="text-sm mb-2"
-                  style={{ color: colors.mutedForeground }}
-                >
+                <Text className="text-sm mb-2" style={{ color: colors.mutedForeground }}>
                   Email
                 </Text>
                 <TextInput
@@ -86,10 +75,7 @@ export default function SettingsScreen() {
             className="px-4 py-4 rounded-xl items-center"
             style={{ backgroundColor: colors.primary }}
           >
-            <Text 
-              className="text-base font-semibold"
-              style={{ color: colors.primaryForeground }}
-            >
+            <Text className="text-base font-semibold" style={{ color: colors.primaryForeground }}>
               Save Changes
             </Text>
           </TouchableOpacity>

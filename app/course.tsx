@@ -1,18 +1,24 @@
-import React, { useEffect } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
-import { useLocalSearchParams, useRouter } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
-import { useTheme } from '@/styles/theme';
 import { Header } from '@/components/Header';
 import { Loader } from '@/components/Loader';
 import { useCourseStore } from '@/store/courseStore';
-import { VideoPlayer } from '@/components/VideoPlayer';
+import { useTheme } from '@/styles/theme';
+import { Ionicons } from '@expo/vector-icons';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import React, { useEffect } from 'react';
+import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 export default function CourseDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
   const { colors } = useTheme();
-  const { currentCourse, isLoading, fetchCourseById, toggleBookmark, downloadCourse, setCurrentLesson } = useCourseStore();
+  const {
+    currentCourse,
+    isLoading,
+    fetchCourseById,
+    toggleBookmark,
+    downloadCourse,
+    setCurrentLesson,
+  } = useCourseStore();
 
   useEffect(() => {
     if (id) {
@@ -40,7 +46,7 @@ export default function CourseDetailScreen() {
   return (
     <View className="flex-1" style={{ backgroundColor: colors.background }}>
       <Header title={currentCourse.title} showBack />
-      
+
       <ScrollView className="flex-1">
         <Image
           source={{ uri: currentCourse.thumbnail }}
@@ -50,53 +56,35 @@ export default function CourseDetailScreen() {
 
         <View className="px-4 py-6">
           <View className="mb-4">
-            <Text 
-              className="text-2xl font-bold mb-2"
-              style={{ color: colors.foreground }}
-            >
+            <Text className="text-2xl font-bold mb-2" style={{ color: colors.foreground }}>
               {currentCourse.title}
             </Text>
-            <Text 
-              className="text-base mb-4"
-              style={{ color: colors.mutedForeground }}
-            >
+            <Text className="text-base mb-4" style={{ color: colors.mutedForeground }}>
               {currentCourse.instructor}
             </Text>
 
             <View className="flex-row items-center mb-4">
               <View className="flex-row items-center mr-4">
                 <Ionicons name="star" size={16} color="#fbbf24" />
-                <Text 
-                  className="ml-1 text-base"
-                  style={{ color: colors.foreground }}
-                >
+                <Text className="ml-1 text-base" style={{ color: colors.foreground }}>
                   {currentCourse.rating.toFixed(1)}
                 </Text>
               </View>
               <View className="flex-row items-center mr-4">
                 <Ionicons name="people" size={16} color={colors.mutedForeground} />
-                <Text 
-                  className="ml-1 text-base"
-                  style={{ color: colors.mutedForeground }}
-                >
+                <Text className="ml-1 text-base" style={{ color: colors.mutedForeground }}>
                   {currentCourse.studentsCount} students
                 </Text>
               </View>
               <View className="flex-row items-center">
                 <Ionicons name="time" size={16} color={colors.mutedForeground} />
-                <Text 
-                  className="ml-1 text-base"
-                  style={{ color: colors.mutedForeground }}
-                >
+                <Text className="ml-1 text-base" style={{ color: colors.mutedForeground }}>
                   {Math.floor(currentCourse.duration / 60)}h
                 </Text>
               </View>
             </View>
 
-            <Text 
-              className="text-base leading-6 mb-4"
-              style={{ color: colors.foreground }}
-            >
+            <Text className="text-base leading-6 mb-4" style={{ color: colors.foreground }}>
               {currentCourse.description}
             </Text>
 
@@ -113,10 +101,12 @@ export default function CourseDetailScreen() {
                   size={20}
                   color={currentCourse.isBookmarked ? colors.primaryForeground : colors.foreground}
                 />
-                <Text 
+                <Text
                   className="ml-2 font-semibold"
                   style={{
-                    color: currentCourse.isBookmarked ? colors.primaryForeground : colors.foreground,
+                    color: currentCourse.isBookmarked
+                      ? colors.primaryForeground
+                      : colors.foreground,
                   }}
                 >
                   {currentCourse.isBookmarked ? 'Bookmarked' : 'Bookmark'}
@@ -129,31 +119,22 @@ export default function CourseDetailScreen() {
                 style={{ backgroundColor: colors.accent }}
               >
                 <Ionicons name="download-outline" size={20} color={colors.accentForeground} />
-                <Text 
-                  className="ml-2 font-semibold"
-                  style={{ color: colors.accentForeground }}
-                >
+                <Text className="ml-2 font-semibold" style={{ color: colors.accentForeground }}>
                   Download
                 </Text>
               </TouchableOpacity>
             </View>
           </View>
 
-          <View 
+          <View
             className="rounded-xl overflow-hidden mb-4"
             style={{ backgroundColor: colors.card }}
           >
             <View className="px-4 py-4 border-b" style={{ borderBottomColor: colors.border }}>
-              <Text 
-                className="text-lg font-semibold"
-                style={{ color: colors.foreground }}
-              >
+              <Text className="text-lg font-semibold" style={{ color: colors.foreground }}>
                 Course Content
               </Text>
-              <Text 
-                className="text-sm mt-1"
-                style={{ color: colors.mutedForeground }}
-              >
+              <Text className="text-sm mt-1" style={{ color: colors.mutedForeground }}>
                 {currentCourse.lessons?.length || 0} lessons
               </Text>
             </View>
@@ -164,36 +145,31 @@ export default function CourseDetailScreen() {
                 onPress={() => handleStartLesson(index)}
                 className="px-4 py-4 border-b flex-row items-center"
                 style={{
-                  borderBottomColor: index < (currentCourse.lessons?.length || 0) - 1 ? colors.border : 'transparent',
+                  borderBottomColor:
+                    index < (currentCourse.lessons?.length || 0) - 1
+                      ? colors.border
+                      : 'transparent',
                 }}
               >
-                <View 
+                <View
                   className="w-10 h-10 rounded-full items-center justify-center mr-3"
                   style={{ backgroundColor: lesson.completed ? colors.primary : colors.muted }}
                 >
                   {lesson.completed ? (
                     <Ionicons name="checkmark" size={20} color={colors.primaryForeground} />
                   ) : (
-                    <Text 
-                      className="text-sm font-semibold"
-                      style={{ color: colors.foreground }}
-                    >
+                    <Text className="text-sm font-semibold" style={{ color: colors.foreground }}>
                       {index + 1}
                     </Text>
                   )}
                 </View>
                 <View className="flex-1">
-                  <Text 
-                    className="text-base font-medium mb-1"
-                    style={{ color: colors.foreground }}
-                  >
+                  <Text className="text-base font-medium mb-1" style={{ color: colors.foreground }}>
                     {lesson.title}
                   </Text>
-                  <Text 
-                    className="text-sm"
-                    style={{ color: colors.mutedForeground }}
-                  >
-                    {Math.floor(lesson.duration / 60)}:{(lesson.duration % 60).toString().padStart(2, '0')}
+                  <Text className="text-sm" style={{ color: colors.mutedForeground }}>
+                    {Math.floor(lesson.duration / 60)}:
+                    {(lesson.duration % 60).toString().padStart(2, '0')}
                   </Text>
                 </View>
                 <Ionicons name="play-circle" size={24} color={colors.primary} />
