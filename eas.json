@@ -12,7 +12,7 @@
       "ios": {
         "simulator": true
       },
-      "env": ".env.development",
+      "env": {},
       "developmentClient": true
     },
     "preview": {
@@ -23,7 +23,7 @@
       "ios": {
         "simulator": false
       },
-      "env": ".env.staging"
+      "env": {}
     },
     "production": {
       "distribution": "store",
@@ -33,7 +33,7 @@
       "ios": {
         "simulator": false
       },
-      "env": ".env.production",
+      "env": {},
       "autoIncrement": true
     },
     "internal": {
@@ -44,7 +44,7 @@
       "ios": {
         "simulator": true
       },
-      "env": ".env.development"
+      "env": {}
     }
   },
   "submit": {
