@@ -71,6 +71,8 @@ yarn-error.*
 # Local env files
 .env*.local
 .env
+# Ignore environment files with environment suffixes (production/staging/etc.)
+.env.*
 !.env.example
 !env.example
 
