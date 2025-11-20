@@ -22,3 +22,10 @@ node_modules/
 coverage/
 *.log
 *.tmp
+# Exclude Android build caches that are generated locally
+android/.gradle/
+android/build/
+android/**/build/
+android/**/.cxx/
+.idea/
+.husky/_/
