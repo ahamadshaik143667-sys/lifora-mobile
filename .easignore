@@ -1,3 +1,62 @@
+# EAS packaging ignore - conservative, exclude local caches and tooling files
+# Keep source code, package.json, and config files in the archive
+
+# Git and VCS
+.git
+/.git
+**/.git/**
+
+# EAS packaging temp and archives
+packtemp/
+eas-pack-*
+*.tar.gz
+project-eas-cli.tar.gz
+captured-eas.tar.gz
+
+# Local OS and editor files
+desktop.ini
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs and debug output
+*.log
+logs/
+coverage/
+coverage-final.json
+
+# Expo and build caches
+.expo/
+.expo-shared/
+node_modules/.cache/
+
+# Android local caches and build artifacts
+android/.gradle/
+android/**/build/
+android/**/.cxx/
+android/**/.externalNativeBuild/
+
+# iOS/Apple build artifacts
+ios/Pods/
+ios/build/
+
+# Tooling and temporary files
+*.tmp
+*.swp
+*.swo
+tmp/
+dist/
+build/
+
+# Husky internal caches
+.husky/_/
+
+# Diagnostic files created during packaging analysis
+eas-list-*
+project-clean-list.txt
+diff-*.txt
+diff-*.json
 # Exclude repository metadata and local packaging artifacts from EAS uploads
 .git
 .git/
