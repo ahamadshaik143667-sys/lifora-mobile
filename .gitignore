@@ -92,3 +92,14 @@ coverage/
 # Temporary files
 *.log
 *.tmp
+# Local packaging artifacts created by EAS CLI or by diagnostic runs
+packtemp/
+project-eas-cli.tar.gz
+clean.tar.gz
+eas-pack-*
+eas-list-*
+eas-build-output-capture.txt
+recent-tar-list*.json
+diff-only-in-*
+diff-details.json
+desktop.ini
