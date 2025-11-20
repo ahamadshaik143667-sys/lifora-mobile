@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import Animated, { useAnimatedStyle, withTiming, runOnJS } from 'react-native-reanimated';
 import { useTheme } from '@/styles/theme';
+import { Ionicons } from '@expo/vector-icons';
+import React, { useEffect } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 interface ToastState {
   message: string;
@@ -24,7 +24,7 @@ export const showToast = (message: string, type: 'success' | 'error' | 'info' = 
   }
 };
 
-export const Toast = () => {
+export const Toast = (): React.ReactElement | null => {
   const [state, setState] = React.useState<ToastState>(toastState);
   const { colors } = useTheme();
 
@@ -35,13 +35,14 @@ export const Toast = () => {
     };
   }, []);
 
-  useEffect(() => {
+  useEffect((): void | (() => void) => {
     if (state.visible) {
       const timer = setTimeout(() => {
         setState(prev => ({ ...prev, visible: false }));
       }, 3000);
       return () => clearTimeout(timer);
     }
+    return;
   }, [state.visible]);
 
   const translateY = useAnimatedStyle(() => ({

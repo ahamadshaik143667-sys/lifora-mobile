@@ -1,10 +1,10 @@
-import { Tabs } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
-import { useTheme } from '@/styles/theme';
 import { RequireAuth } from '@/lib/requireAuth';
+import { useTheme } from '@/styles/theme';
+import { Ionicons } from '@expo/vector-icons';
+import { Tabs } from 'expo-router';
 
 export default function TabsLayout() {
-  const { colors, isDark } = useTheme();
+  const { colors } = useTheme();
 
   return (
     <RequireAuth>

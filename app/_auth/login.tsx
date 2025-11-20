@@ -1,20 +1,19 @@
 // FILE: app/(auth)/login.tsx
+import SocialButtons from '@/components/SocialButtons';
+import { showToast } from '@/lib/toast';
+import { useAuthStore } from '@/store/authStore';
+import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import {
+  KeyboardAvoidingView,
+  Platform,
   SafeAreaView,
-  View,
+  ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  Alert,
+  View,
 } from 'react-native';
-import { useRouter } from 'expo-router';
-import SocialButtons from '@/components/SocialButtons';
-import { useAuthStore } from '@/store/authStore';
-import { showToast } from '@/lib/toast';
 
 export default function LoginScreen() {
   const router = useRouter();

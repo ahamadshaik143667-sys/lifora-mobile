@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, RefreshControl, TouchableOpacity } from 'react-native';
-import { useRouter } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
-import * as FileSystem from 'expo-file-system';
-import { useTheme } from '@/styles/theme';
-import { Header } from '@/components/Header';
 import { CourseCard } from '@/components/CourseCard';
+import { Header } from '@/components/Header';
 import { Loader } from '@/components/Loader';
 import { useCourseStore } from '@/store/courseStore';
+import { useTheme } from '@/styles/theme';
+import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+import React, { useEffect, useState } from 'react';
+import { RefreshControl, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 export default function DownloadsScreen() {
   const router = useRouter();

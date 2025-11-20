@@ -111,7 +111,7 @@ export function measurePerformance(name?: string) {
     descriptor: PropertyDescriptor
   ): PropertyDescriptor {
     const originalMethod = descriptor.value;
-    const metricName = name || `${target.constructor.name}.${propertyKey}`;
+    const metricName = name || `${(target as any).constructor.name}.${propertyKey}`;
 
     descriptor.value = async function (...args: unknown[]) {
       return performanceMonitor.measure(metricName, () => originalMethod.apply(this, args));
