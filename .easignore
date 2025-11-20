@@ -1,5 +1,10 @@
 # Exclude repository metadata and local packaging artifacts from EAS uploads
+.git
 .git/
+/.git
+/.git/**
+**/.git
+**/.git/**
 packtemp/
 project-eas-cli.tar.gz
 captured-eas.tar.gz
