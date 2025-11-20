@@ -1,0 +1,19 @@
+# Exclude repository metadata and local packaging artifacts from EAS uploads
+.git/
+packtemp/
+project-eas-cli.tar.gz
+captured-eas.tar.gz
+project-clean.tar.gz
+clean.tar.gz
+desktop.ini
+eas-pack-*
+eas-list-*
+eas-build-output*.txt
+recent-tar-list*.json
+diff-*
+
+# Local build artifacts and caches
+node_modules/
+coverage/
+*.log
+*.tmp
